@@ -1,0 +1,17 @@
+version: '3.4'
+
+services:
+
+  grav-nginx:
+    image: grav-nginx:latest
+    build:
+      context: ./docker
+      dockerfile: Dockerfile
+    environment:
+      - USE_SSL=false
+      - USE_SELF_GEN_CERT=false
+    volumes:
+      - "./html:/home/grav/www/html"
+    ports:
+      - "80:80"
+      - "443:443"
